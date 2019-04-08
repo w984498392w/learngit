@@ -3,23 +3,16 @@
     <el-table :data="tableDatas" border row-key="id" align="left" @selection-change="handleSelectionChange" :cell-style="cellStyle">
       <el-table-column type="selection" width="55">
       </el-table-column>
-      <el-table-column v-for="(item, index) in col" :key="`col_${index}`" :prop="dropCol[index].prop" :label="item.label"></el-table-column>
+      <el-table-column v-for="(item, index) in col" :key="`col_${index}`" :prop="item.prop" :label="item.label"></el-table-column>
     </el-table>
     <button @click="con">唧唧复唧唧</button>
-    <!-- <pre style="text-align: left">
-      {{dropCol}}
-    </pre>
-    <hr>
-    <pre style="text-align: left">
-      {{tableData}}
-    </pre>-->
   </div>
 </template>
 <script>
   import Sortable from "sortablejs";
 
   export default {
-    props: [ 'col', 'dropCol', 'tableDatas' ],
+    props: [ 'col', 'tableDatas' ],
     data() {
       return {
         multipleSelection: []
@@ -27,7 +20,6 @@
     },
     mounted() {
       this.rowDrop();
-      this.columnDrop();
     },
     methods: {
       //行拖拽
@@ -45,18 +37,6 @@
         } );
       },
       //列拖拽
-      columnDrop() {
-        const wrapperTr = document.querySelector( ".el-table__header-wrapper tr" );
-        this.sortable = Sortable.create( wrapperTr, {
-          animation: 180,
-          delay: 0,
-          onEnd: evt => {
-            const oldItem = this.dropCol[ evt.oldIndex ];
-            this.dropCol.splice( evt.oldIndex, 1 );
-            this.dropCol.splice( evt.newIndex, 0, oldItem );
-          }
-        } );
-      },
       con() {
         console.log( this.multipleSelection );
       },

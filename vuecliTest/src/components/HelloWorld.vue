@@ -1,13 +1,14 @@
 <template>
   <div class="hello">
-
-    <compareTable :col='col' :tableDatas='tableDatas' :dropCol='dropCol'></compareTable>
-
-
-
+    <aaa :totalNum='totalNum'></aaa>
     <br>
     <br>
     <br>
+    <compareTable :col='col' :tableDatas='tableDatas'></compareTable>
+
+
+
+
 
 
     <AdvancedFilter :data7="gjsx" :sxtj='sxtj'></AdvancedFilter>
@@ -22,6 +23,8 @@
 </template>
 
 <script>
+  import aaa from "./aaa.vue"
+
   import Tree from "./tree.vue"
   import AdvancedFilter from "./advancedFilter.vue"
   import compareTable from "./compareTable.vue"
@@ -93,19 +96,6 @@
             prop: "address"
           }
         ],
-        dropCol: [ {
-            label: "日期",
-            prop: "date"
-          },
-          {
-            label: "姓名",
-            prop: "name"
-          },
-          {
-            label: "地址",
-            prop: "address"
-          }
-        ],
         tableDatas: [ {
             id: "1",
             date: "2016-05-02",
@@ -129,9 +119,16 @@
             date: "2016-05-03",
             name: "王小虎4",
             address: "上海市普陀区金沙江路 400 弄"
+          },
+          {
+            id: "5",
+            date: "2016-05-05",
+            name: "王小虎6",
+            address: "上海市普陀区金沙江路 600 弄"
           }
         ],
-        sxtj: []
+        sxtj: [],
+        totalNum: 237
       }
     },
     methods: {
@@ -153,7 +150,8 @@
     components: {
       Tree,
       AdvancedFilter,
-      compareTable
+      compareTable,
+      aaa
     }
   }
 </script>
