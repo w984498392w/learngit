@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Table from '@/components/tableEdit'
+import ssss from '@/components/ssss'
 
 Vue.use( Router )
 
@@ -15,6 +16,11 @@ export default new Router( {
       path: '/table',
       name: 'table',
       component: Table
+    },
+    {
+      path: '/ssss',
+      name: 'ssss',
+      component: ssss
     }
   ]
 } )
